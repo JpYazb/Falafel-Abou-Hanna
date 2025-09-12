@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Falafel Abou Hanna</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/script.js" defer></script>
+</head>
+<body>
+  <div class="title" id="title">
+    <h1 class="falafel">Falafel</h1>
+    <h1 class="abou-hanna"><span>ABOU HANNA</span></h1>
+    <hr class="divider">
+    <div class="nav">
+      <div class="about">About</div>
+      <div class="menu" id="menuButton">Menu</div>
+      <div class="details" id="detailsBtn">Details</div>
+    </div>
+  </div>
+
+  <!-- Reviews Section -->
+  <div class="reviews-section" id="reviewsSection">
+    <h2 class="reviews-title">Reviews</h2>
+    <div class="reviews-carousel">
+      <button class="carousel-arrow prev-arrow" id="prevReviewBtn">&lt;</button>
+      <div class="reviews-container"></div>
+      <button class="carousel-arrow next-arrow" id="nextReviewBtn">&gt;</button>
+    </div>
+
+    <!-- Review form -->
+    <div class="review-form-container">
+      <h3>Leave Your Review</h3>
+      <form id="reviewForm">
+        <div class="star-rating">
+          <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+          <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+          <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+          <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+          <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+        </div>
+        <textarea id="reviewText" maxlength="278" placeholder="Share your experience..." required></textarea>
+        <p id="charCount">278 characters remaining</p>
+        <div class="form-row">
+          <input type="text" id="reviewName" placeholder="Your Name" required>
+          <button type="submit" id="submitReview">Submit Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <button class="closebtn" id="sidebarCloseBtn">&times;</button>
+    <ul>
+      <li><a href="https://www.google.com/maps/place/4746+Boul+St,+Jean,+Canada" target="_blank">Location</a></li>
+      <li><a href="#" id="hoursBtn">Opening Hours</a></li>
+      <li><a href="#" id="contactUsBtn">Contact Us!</a></li>
+      <li><a href="https://www.ubereats.com/ca/store/falafel-abou-hanna/AdguZuZBTcaktkpiyaH6tQ?diningMode=DELIVERY&sc=SEARCH_SUGGESTION" target="_blank">Uber Eats</a></li>
+    </ul>
+
+    <!-- Opening Hours -->
+    <div class="hours" id="hours">
+      <button class="closebtn" id="hoursCloseBtn">&times;</button>
+      <div class="hours-content">
+        <h3>Opening Hours</h3>
+        <ul>
+          <li><strong>Monday:</strong> 11:00 AM - 7:00 PM</li>
+          <li><strong>Tuesday:</strong> 11:00 AM - 7:00 PM</li>
+          <li><strong>Wednesday:</strong> 11:00 AM - 7:00 PM</li>
+          <li><strong>Thursday:</strong> 11:00 AM - 7:00 PM</li>
+          <li><strong>Friday:</strong> 11:00 AM - 7:00 PM</li>
+          <li><strong>Saturday:</strong> 11:00 AM - 6:00 PM</li>
+          <li><strong>Sunday:</strong> Closed</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact" class="contact">
+      <div class="content">
+        <span class="close" id="contactCloseBtn">&times;</span>
+        <h2>Contact Us</h2>
+        <a href="tel:+15145600777">Call us at: +1 514-560-0777</a>
+      </div>
+    </div>
+
+    <!-- Menu Page -->
+    <div class="menu-page" id="menuPage">
+      <button class="closebtn menu-close" id="menuCloseBtn">&times;</button>
+        <div class="menu-grid">
+         <div class="menu-item">
+            <div class="menu-card">
+              <div class="menu-front">
+                <img src="https://tb-static.uber.com/prod/image-proc/processed_images/3b2e32bb8816d96b63f611a757d711d1/58f691da9eaef86b0b51f9b2c483fe63.jpeg" alt="Falafel">
+                <p>Trio Falafel</p>
+              </div>
+              <div class="menu-back">
+                <p>Sandwich with Fresh falafel balls, tomato, parsley, mint, turnip, tahini sauce and fries on the side, drink included!</p>
+                <p><strong>$11.99</strong></p>
+             </div>
+          </div>
+        </div>
+        <div class="menu-item">
+                    <div class="menu-card">
+                        <!-- Front -->
+                        <div class="menu-front">
+                        <img src="https://tb-static.uber.com/prod/image-proc/processed_images/a5d33b244ffb62ab01027f94bfd5daea/58f691da9eaef86b0b51f9b2c483fe63.jpeg" alt="Foul">
+                        <p>Foul</p>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="menu-back">
+                        <p>Slow cooked fava beans seasoned with olive oil, lemon juice, garlic and spices.</p>
+                        <p><strong>$8.99</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-card">
+                        <!-- Front -->
+                        <div class="menu-front">
+                        <img src="https://tb-static.uber.com/prod/image-proc/processed_images/f03d735b3000fb92fb3adf25717a4d01/58f691da9eaef86b0b51f9b2c483fe63.jpeg" alt="Hummus">
+                        <p>Hummus</p>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="menu-back">
+                        <p>Crispy chickpea balls served with tahini sauce.</p>
+                        <p><strong>$8.99</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-card">
+                        <!-- Front -->
+                        <div class="menu-front">
+                        <img src="https://tb-static.uber.com/prod/image-proc/processed_images/957957f752036497da087c76fe190636/58f691da9eaef86b0b51f9b2c483fe63.jpeg" alt="Fatteh">
+                        <p>Fatteh</p>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="menu-back">
+                        <p>Crispy chickpea balls served with tahini sauce.</p>
+                        <p><strong>$8.99</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="menu-item">
+                    <div class="menu-card">
+                        <!-- Front -->
+                        <div class="menu-front">
+                        <img src="https://tb-static.uber.com/prod/image-proc/processed_images/b0d7b9a5373e7ed49f3e51ce4c5fb07c/58f691da9eaef86b0b51f9b2c483fe63.jpeg" alt="Fattouch">
+                        <p>Fattouch</p>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="menu-back">
+                        <p>Crispy chickpea balls served with tahini sauce.</p>
+                        <p><strong>$8.99</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-card">
+                        <!-- Front -->
+                        <div class="menu-front">
+                        <img src="https://tb-static.uber.com/prod/image-proc/processed_images/ebd83dc997742ca27f267d762c4c7fdc/58f691da9eaef86b0b51f9b2c483fe63.jpeg" alt="Balila">
+                        <p>Balila</p>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="menu-back">
+                        <p>Crispy chickpea balls served with tahini sauce.</p>
+                        <p><strong>$8.99</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-card">
+                        <!-- Front -->
+                        <div class="menu-front">
+                        <img src="https://tb-static.uber.com/prod/image-proc/processed_images/e721c1f127f85a152ce8eec011829027/58f691da9eaef86b0b51f9b2c483fe63.jpeg" alt="Balila">
+                        <p>Moussabaha</p>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="menu-back">
+                        <p>Crispy chickpea balls served with tahini sauce.</p>
+                        <p><strong>$8.99</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="menu-item">
+                    <div class="menu-card">
+                        <!-- Front -->
+                        <div class="menu-front">
+                        <img src="https://tb-static.uber.com/prod/image-proc/processed_images/4cef4e5bc36df08508a6101d1402de2f/58f691da9eaef86b0b51f9b2c483fe63.jpeg" alt="Kudsiyeh">
+                        <p>Kudsiyeh</p>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="menu-back">
+                        <p>Crispy chickpea balls served with tahini sauce.</p>
+                        <p><strong>$8.99</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-card">
+                        <!-- Front -->
+                        <div class="menu-front">
+                        <img src="https://2.bp.blogspot.com/-SLXeNwRXaP4/ToE9NgvNWeI/AAAAAAAAAfg/955B2761kN0/s1600/Tabouleh+5.JPG" alt="Tabouleh">
+                        <p>Tabouleh</p>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="menu-back">
+                        <p>Crispy chickpea balls served with tahini sauce.</p>
+                        <p><strong>$8.99</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-card">
+                        <!-- Front -->
+                        <div class="menu-front">
+                        <img src="https://tb-static.uber.com/prod/image-proc/processed_images/712cf929c7a7b25705b3ecaa22aca35b/58f691da9eaef86b0b51f9b2c483fe63.jpeg" alt="12 Falafels">
+                        <p>12 Falafels</p>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="menu-back">
+                        <p>Crispy chickpea balls served with tahini sauce.</p>
+                        <p><strong>$8.99</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-card">
+                        <!-- Front -->
+                        <div class="menu-front">
+                        <img src="https://tb-static.uber.com/prod/image-proc/processed_images/dffdd5d208ded0445f236e09adcaa38a/58f691da9eaef86b0b51f9b2c483fe63.jpeg">
+                        <p>Falafel plate</p>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="menu-back">
+                        <p>Crispy chickpea balls served with tahini sauce.</p>
+                        <p><strong>$8.99</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-card">
+                        <!-- Front -->
+                        <div class="menu-front">
+                        <img src="https://tb-static.uber.com/prod/image-proc/processed_images/e0ffdc4fc5354a685522bc20da15e25c/58f691da9eaef86b0b51f9b2c483fe63.jpeg">
+                        <p>Fries</p>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="menu-back">
+                        <p>Crispy chickpea balls served with tahini sauce.</p>
+                        <p><strong>$8.99</strong></p>
+                        </div>
+                    </div>
+                </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js" defer></script>
+</body>
+</html>

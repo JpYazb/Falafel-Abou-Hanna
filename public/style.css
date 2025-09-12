@@ -1,0 +1,1046 @@
+/* BLURRED background via pseudo-element */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Solid, simple background image */
+html, body {
+  background: url("/images/background.jpeg") center / cover no-repeat fixed;
+  background-color: #000; /* fallback if image hiccups */
+}
+
+
+body {
+  position: relative;
+  z-index: 0;
+  background: transparent;
+}
+
+/* TEMP: force http so we know it loads 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("/images/background.jpeg") center/cover no-repeat;
+  filter: blur(2px);
+  z-index: -1;
+  pointer-events: none;
+}*/
+
+.contact h2 { font-size: 27px; }
+
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    transition: top 1.5s ease-in-out; /* Smooth transition */
+}
+
+.falafel {
+    font-size: 10rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    color: rgb(255, 0, 0);
+    margin: 0;
+    padding: 0;
+    text-transform: capitalize;
+    text-shadow: 2px 2px 4px black, -2px -2px 4px black, 2px -2px 4px black, -2px 2px 4px black; /* Black outline effect */
+}
+
+.abou-hanna {
+    font-size: 8rem;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    color: rgb(68, 255, 0);
+    margin: 0;
+    padding: 0;
+    cursor: default;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px black, -2px -2px 4px black, 2px -2px 4px black, -2px 2px 4px black; /* Black outline effect */
+}
+@media (max-width: 768px) {
+  .falafel {
+    font-size: 6rem; /* instead of 10rem */
+  }
+  .abou-hanna {
+    font-size: 4rem; /* instead of 8rem */
+  }
+}
+
+@media (max-width: 480px) {
+  .falafel {
+    font-size: 4rem;
+  }
+  .abou-hanna {
+    font-size: 3rem;
+  }
+}
+
+.abou-hanna span {
+    white-space: nowrap; /* Prevents line break */
+}
+
+
+.divider {
+    width: 0; /* Start with no width */
+    height: 4px; /* Line thickness */
+    background: black;
+    border: none;
+    margin: 10px auto;
+    animation: drawLine 1s ease-out 1.5s forwards; /* Animation */
+    text-shadow: 2px 2px 4px black, -2px -2px 4px black, 2px -2px 4px black, -2px 2px 4px black; /* Black outline effect */
+}
+
+@keyframes drawLine {
+    from {
+        width: 0; /* Start with no width */
+    }
+    to {
+        width: 80%; /* Expand to full width */
+    }
+}
+
+
+/* Menu + About Code */
+
+
+
+/* Space between menu and about */
+
+.nav {
+    display: flex;
+    justify-content: center; /* Center items */
+    align-items: center; /* Align them vertically */
+    gap: 30px; /* Space between "About" and "Menu" */
+    flex-wrap: wrap;
+}
+
+
+/* About code */
+
+.about, .menu , .details {
+    font-size: 2.5rem;
+    left: 50% ;
+    font-weight: bold; /* Less bold */
+    opacity: 0; /* Start hidden */
+    color: rgb(255, 255, 255); /* Or any color you prefer */
+    margin: 0;
+    cursor: default;
+    text-transform: capitalize; /* Ensure it's lowercase */
+    transform: translateY(20px); /* Start slightly below */
+    animation: menuJump 0.8s ease-out 2.5s forwards; /* Animation with delay */ 
+    display: inline-block; /* Prevent hover from covering too much space */
+    padding: 5px 10px; /* Only small padding around text */   
+    text-shadow: 2px 2px 0px black, -1px -1px 0px black, 1px -1px 0px black, -1px 1px 0px black;
+    transition: transform 0.2s ease-in-out; /* Smooth scaling */
+}
+
+.about:hover , .menu:hover , .details:hover{
+    color: rgb(164, 226, 164);
+    transform: scale(1.1); /* Grows by 10% */
+}
+
+/* Arrow under about code */
+
+
+.about::after, .menu::after , .details::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px; /* Adjust distance below the text */
+    width: 0;
+    height: 0;
+    cursor: default;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid rgb(255, 255, 255); /* This forms the top of the arrow */
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 3s forwards; /* Arrow appears slightly after the text */
+    text-shadow: 4px 5px 5px black, -5px -5px 6px black, 5px -5px 6px black, -5px 5px 6px black;
+   
+}
+
+.about:hover::after, .menu:hover::after , .details:hover::after{
+    border-top-color: rgb(164, 226, 164);
+}
+
+/* Jump-in animation */
+
+
+@keyframes menuJump {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Start lower */
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-5px); /* Slight upward overshoot */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Settle in place */
+    }
+}
+
+/* Arrow fade-in animation */
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Menu */
+
+/* Sidebar menu styles */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 1000;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Opening Hours */
+
+.hours {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Initially hidden on the right side */
+    width: 30%; /* Adjust width to your preference */
+    height: 100vh; /* Full height */
+    background-color: #333;
+    color: #818181;
+    transition: right 1s ease; /* Slow down the transition for the sidebar */
+    z-index: 9999;
+    padding: 20px;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* To allow scrolling if content overflows */
+}
+
+.hours.open {
+    right: 0; /* Slide into view */
+}
+
+.hours .close {
+    right: -100%; /* Close the sidebar */
+}
+
+/* Content styling inside the hours section */
+.hours-content {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center; /* Center text */
+  }
+
+.hours h3 {
+    font-size: 5rem; /* Bigger font size */
+    margin-bottom: 20px;
+    color: #fff;
+ }
+
+/* Title for the opening hours */
+@media (max-width: 600px) {
+  .hours h3 {
+      font-size: 2rem; /* Bigger font size */
+      margin-bottom: 20px;
+      color: #fff;
+  }
+}
+
+/* List styling for hours */
+.hours ul {
+    list-style: none;
+    padding: 0;
+    color: #fff;
+}
+
+.hours li {
+    margin-bottom: 10px;
+    font-size: 2rem; /* Bigger font size for list items */
+    opacity: 0; /* Initially hidden */
+    transform: translateX(100%); /* Start from the right */
+    transition: opacity 0.3s ease, transform 0.5s ease; /* Smooth transitions */
+}
+
+@media (max-width: 600px) {
+  .hours li {
+      margin-bottom: 10px;
+      font-size: 1rem; /* Bigger font size for list items */
+      opacity: 0; /* Initially hidden */
+      transform: translateX(100%); /* Start from the right */
+      transition: opacity 0.3s ease, transform 0.5s ease; /* Smooth transitions */
+  }
+}
+
+/* When the section is opened, animate each li from right to left */
+.hours.open li {
+    opacity: 1;
+    transform: translateX(0); /* Move to original position */
+}
+
+/* Close button (X) */
+.hours .closebtn {
+    font-size: 36px;
+    color: #fff;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* contacts */
+
+/* Modal styles */
+.contact {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 500px;
+  }
+
+  /* Contact popup: adjust only on phones */
+@media (max-width: 600px) {
+  .contact {
+    padding-top: 450px !important; /* raise it higher */
+  }
+
+  .contact .content {
+    font-size: 1.2rem;   /* bump up text size */
+    line-height: 1.6;
+  }
+
+  .contact .content a[href^="tel"] {
+    font-size: 1.4rem;   /* make the phone number bigger */
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+  }
+}
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+  }
+
+  
+  .content {
+    background-color: #333;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  body {
+    margin: 0;
+    overflow: hidden; /* Prevents scrolling during transition */
+}
+
+/* For the menu */
+
+.menu-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  transform: translateY(100%);
+  transition: transform 0.5s ease-in-out;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow-y: auto;   /* ✅ allow vertical scroll inside menu */
+  overscroll-behavior: contain; /* ✅ stops scroll from leaking to body */
+}
+
+
+.menu-page.open {
+    transform: translateY(40vh); /* Slides up by 300px */
+}
+
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Add these updated styles for the reviews section to your existing style.css file */
+
+/* Reviews Section - Updated positioning for landing page */
+.reviews-section {
+    position: absolute;
+    width: 100%;
+    max-width: 1600px;
+    padding: 30px;
+    background-color: rgb(255, 255, 255); /* Semi-transparent background */
+    border-radius: 15px;
+    top: 75%; /* Position below the main title */
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 5; /* Above background, below menus */
+    margin-top: 20px; /* Add some space below title */
+}
+
+/* Keep the rest of your reviews CSS, but update these properties */
+.reviews-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Make the review container more compact for the landing page */
+.reviews-container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    scroll-behavior: smooth;
+    padding-left: 30px;   /* space before the first bubble */
+    padding-right: 30px;  /* space after the last bubble */
+    
+}
+
+.review-bubble {
+    min-width: 280px;
+    margin: 0 10px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .reviews-section {
+        width: 90%;
+        padding: 15px;
+        top: 80%;
+    }
+    
+    .reviews-title {
+        font-size: 2rem;
+    }
+    
+    .review-bubble {
+        min-width: 220px;
+        padding: 10px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .reviews-section {
+        width: 95%;
+        top: 85%;
+        padding: 10px;
+    }
+    
+    .reviews-title {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    
+    .review-bubble {
+        min-width: 200px;
+    }
+}
+
+html, body {
+    overflow-y: auto;
+}
+
+/* Carousel arrows positioning */
+.reviews-carousel {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.prev-arrow {
+    left: 10px;
+}
+
+.next-arrow {
+    right: 10px;
+}
+
+/* Make sure the reviews container doesn't overlap with arrows */
+.reviews-container {
+    padding: 0 50px;
+    margin: 0 auto;
+}
+
+/* Enhanced Review Form styling */
+.review-form-container {
+    margin-top: 40px;
+    padding: 25px;
+    background-color: #f8f8f8;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #e0e0e0;
+}
+
+.review-form-container h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+}
+
+#reviewForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.star-rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: 2rem;
+    flex-direction: row-reverse;
+   
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 36px;
+    padding: 0 5px;
+    transition: color 0.2s;
+}
+
+/* Hover effect and selected stars */
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #ffd700;
+}
+
+#reviewText {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    min-height: 120px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+#reviewName {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1rem;
+}
+
+#submitReview {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+#submitReview:hover {
+    background-color: #45a049;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .review-form-container {
+        padding: 20px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+    }
+    
+    #submitReview {
+        width: 100%;
+    }
+}
+
+/* Review text truncation and show more functionality */
+.review-text {
+    margin: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Show 3 lines by default */
+    line-clamp: 3; /* For modern browsers */
+    line-height: 1.5;
+    max-height: 4.5em; /* Fallback for unsupported browsers */
+    position: relative;
+    transition: max-height 0.3s ease, -webkit-line-clamp 0.3s ease, padding 0.3s ease;
+}
+
+/* Expanded state to show full text smoothly */
+.review-text.expanded {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    display: block;
+    max-height: 1000px; /* Ensures smooth transition for any content length */
+    transition: max-height 0.4s ease-in-out;
+}
+
+
+/* Show more/less button */
+.show-more-btn {
+    display: inline-block;
+    color: #4CAF50;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 5px;
+    user-select: none;
+    transition: color 0.2s ease;
+}
+
+.show-more-btn:hover {
+    text-decoration: underline;
+    color: #45a049; /* Slightly darker green on hover */
+}
+
+/* Review bubble styling */
+.review-bubble {
+    overflow: hidden; /* Prevents overflow */
+    word-wrap: break-word; /* Ensures long words don't overflow */
+    position: relative;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Prevent caret and text selection everywhere */
+body {
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE/Edge */
+}
+
+body.menu-open {
+  overflow: hidden;  /* stop background page from scrolling */
+}
+
+
+/* Allow typing + caret inside form fields */
+input, textarea {
+    user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+}
+
+/* Menu grid layout */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 50px; /* space between items */
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 60px; /* space under the close button */
+}
+
+/* Each menu item (rectangle) */
+
+.menu-item {
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+  padding: 0; /* remove inside padding */
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  height: 320px; /* taller rectangle */
+}
+
+.menu-item:hover {
+  transform: scale(1.03);
+}
+
+/* Style ONLY the menu's close button */
+/* Specific styling for the Menu close button */
+.menu-close {
+  right: 70px;   /* move it more to the right */
+  font-size: 36px;          /* bigger X */
+  color: black;           /* red X */
+  background: none;         /* no background */
+  border: none;             /* no border */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.menu-close:hover {
+  color: #cc0000;           /* darker red on hover */
+}
+
+
+
+/* Menu images */
+.menu-item img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+/* Menu text */
+.menu-item p {
+  margin-top: 10px 0;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Flip container */
+.menu-item {
+  perspective: 1000px; /* enables 3D */
+}
+
+/* Card wrapper */
+.menu-card {
+  position: relative;
+  width: 100%;
+  height: 320px; /* same height as before */
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.menu-item:hover .menu-card {
+    /* Fallback hover if there is no .menu-card wrapper */
+.menu-item:hover .menu-front { transform: rotateY(180deg); }
+.menu-item:hover .menu-back  { transform: rotateY(0); }
+
+}
+
+/* Front and back faces */
+.menu-front,
+.menu-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 320px; /* taller rectangle */
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* remove inside padding */
+  background-color: #f8f8f8;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+/* Front */
+.menu-front img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+}
+.menu-front p {
+  margin-top: 10px 0;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Back */
+.menu-back {
+  transform: rotateY(180deg);
+  background: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+}
+
+
+/* Responsive adjustments for menu grid */
+@media (max-width: 1024px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-grid {
+    grid-template-columns: 1fr; /* 1 column on phones */
+  }
+}
+
+/* Back of menu card: description + price only */
+.menu-back {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* center vertically */
+  align-items: center;     /* center horizontally */
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Description should wrap naturally into multiple lines */
+.menu-back .menu-description {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 15px;
+  word-wrap: break-word;
+  max-width: 90%;
+}
+
+/* Price styling */
+.menu-back .menu-price {
+  font-size: 1.2rem;
+  color: #000;
+}
+/* --- Fix text clipping on the back of menu cards --- */
+
+/* Make padding actually count and stop the edge clipping */
+.menu-front,
+.menu-back {
+  box-sizing: border-box;
+  padding: 20px;          /* add breathing room */
+  overflow: visible;      /* was hidden: allow glyphs to render fully */
+}
+
+/* If the parent also clips, unclip it */
+.menu-card,
+.menu-item {
+  overflow: visible;
+}
+
+/* Make the description wrap cleanly to multiple lines */
+.menu-back p {
+  margin: 6px 0;
+  white-space: normal;
+  word-break: break-word;   /* prevent long words from sticking out */
+  hyphens: auto;            /* nicer breaks when available */
+  text-align: center;
+  line-height: 1.45;
+}
+
+/* Optional: sub-pixel text cut fixes on some GPUs when using 3D transforms */
+.menu-back {
+  transform: translateZ(0);       /* create own layer to avoid glyph clipping */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* --- Flip card baseline (front shown by default) --- */
+.menu-item {                    /* your card outer element */
+  position: relative;
+  perspective: 1000px;
+}
+
+.menu-card {                    /* the inner rotating panel (wraps both faces) */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .6s ease;
+}
+
+/* Faces */
+.menu-front,
+.menu-back {
+  position: absolute;
+  inset: 0;                     /* top:0; right:0; bottom:0; left:0 */
+  backface-visibility: hidden;  /* hide reversed side */
+  box-sizing: border-box;
+  padding: 20px;                /* keep the anti-clipping padding */
+  overflow: visible;            /* prevent glyph cut-off */
+}
+
+/* Show front by default */
+.menu-front { transform: rotateY(0); }
+
+/* Keep back hidden by default (rotated 180°) */
+.menu-back  { transform: rotateY(180deg); }
+
+/* On hover: rotate the whole card so the back faces you */
+.menu-item:hover .menu-card {
+  transform: rotateY(180deg);
+}
+
+/* Flip baseline & anti-clipping */
+.menu-item { position: relative; perspective: 1000px; }
+.menu-card { position: relative; transform-style: preserve-3d; transition: transform .6s ease; }
+.menu-front, .menu-back {
+  position: absolute; inset: 0; backface-visibility: hidden;
+  box-sizing: border-box; padding: 20px; overflow: visible;
+}
+.menu-front { transform: rotateY(0); }
+.menu-back  { transform: rotateY(180deg); transform: translateZ(0); }
+
+.menu-item:hover .menu-card { transform: rotateY(180deg); }
+
+/* Menu back content: description wraps, centered */
+.menu-back .menu-description {
+  font-size: 1rem; line-height: 1.45; text-align: center;
+  word-break: break-word; hyphens: auto; margin: 0 0 12px;
+}
+.menu-back .menu-price { font-size: 1.2rem; }
+
+/* --- Flip card baseline (front shown by default) --- */
+.menu-item {                    /* your card outer element */
+  position: relative;
+  perspective: 1000px;
+}
+
+.menu-card {                    /* the inner rotating panel (wraps both faces) */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .6s ease;
+}
+
+/* Faces */
+.menu-front,
+.menu-back {
+  position: absolute;
+  inset: 0;                     /* top:0; right:0; bottom:0; left:0 */
+  backface-visibility: hidden;  /* hide reversed side */
+  box-sizing: border-box;
+  padding: 20px;                /* keep the anti-clipping padding */
+  overflow: visible;            /* prevent glyph cut-off */
+}
+
+/* Show front by default */
+.menu-front { transform: rotateY(0); }
+
+/* Keep back hidden by default (rotated 180°) */
+.menu-back  { transform: rotateY(180deg); }
+
+/* On hover: rotate the whole card so the back faces you */
+.menu-item:hover .menu-card {
+  transform: rotateY(180deg);
+}
+
+
+
+
