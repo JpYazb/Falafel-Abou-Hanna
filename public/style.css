@@ -125,7 +125,7 @@ body::before {
 
 /* About code */
 
-.about, .menu , .details {
+.menu , .details {
     font-size: 2.5rem;
     left: 50% ;
     font-weight: bold; /* Less bold */
@@ -142,7 +142,7 @@ body::before {
     transition: transform 0.2s ease-in-out; /* Smooth scaling */
 }
 
-.about:hover , .menu:hover , .details:hover{
+.menu:hover , .details:hover{
     color: rgb(164, 226, 164);
     transform: scale(1.1); /* Grows by 10% */
 }
@@ -150,7 +150,7 @@ body::before {
 /* Arrow under about code */
 
 
-.about::after, .menu::after , .details::after{
+.menu::after , .details::after{
     content: "";
     position: absolute;
     left: 50%;
@@ -168,7 +168,7 @@ body::before {
    
 }
 
-.about:hover::after, .menu:hover::after , .details:hover::after{
+ .menu:hover::after , .details:hover::after{
     border-top-color: rgb(164, 226, 164);
 }
 
