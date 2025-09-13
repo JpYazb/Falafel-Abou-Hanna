@@ -11,7 +11,8 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PUBLIC_DIR = path.join(__dirname, "public");
-const REVIEWS_FILE = path.join(__dirname, "site-reviews.json");
+const REVIEWS_FILE = process.env.REVIEWS_FILE || "/var/data/site-reviews.json";
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
